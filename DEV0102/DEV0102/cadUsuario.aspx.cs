@@ -163,5 +163,29 @@ namespace DEV0102
                 ExibirMensagem("Liberado para edição!");
             }
         }
+
+        protected void btnAtualizar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnAtualizar_Click1(object sender, EventArgs e)
+        {
+            List<tabUsuario> objlstUsuario = new List<tabUsuario>();
+            usuarioDAL uDal = new usuarioDAL();
+            objlstUsuario = uDal.listarTodosUsuarios();
+            foreach (tabUsuario obju in objlstUsuario)
+            {
+                ExibirMensagem(obju.nome);
+
+            }
+            foreach (var item in collection)
+            {
+
+            }
+          
+
+
+        }
     }
 }

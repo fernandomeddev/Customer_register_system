@@ -53,6 +53,9 @@
                 </Columns>
             </asp:GridView>
 
+            <asp:Button ID="btnAtualizar" runat="server" Text="Atualizar" OnClick="btnAtualizar_Click1" OnClientClick="return confirm('deseja realmente Atualizar')" />
+
+
             <asp:HiddenField ID="hiddenfildCodigo" runat="server" Value="0" />
 
             <asp:SqlDataSource runat="server" ID="SqlDataSourceUsuario" ConnectionString='<%$ ConnectionStrings:DEV0102ConnectionString %>' SelectCommand="select '~/fotoUsuario/' + nomeFoto as caminhoFoto, * from tabusuario"></asp:SqlDataSource>
