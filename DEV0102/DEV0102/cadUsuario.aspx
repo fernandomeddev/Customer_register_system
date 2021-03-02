@@ -34,6 +34,7 @@
             <asp:FileUpload ID="fupFoto" runat="server" /><br />
             <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click" />
             <br />
+            <asp:Panel ID="panelUsuCadastrados" runat="server" Visible="false" >
             <h4>Usuários Cadastrados</h4>
             <asp:GridView ID="gridUsuario" OnRowCommand="gridUsuario_RowCommand" runat="server" AutoGenerateColumns="False" DataKeyNames="codigo" DataSourceID="SqlDataSourceUsuario" AllowPaging="True" AllowSorting="True">
                 <Columns>
@@ -50,6 +51,11 @@
                     <asp:BoundField DataField="nomeFoto" Visible="false" HeaderText="nomeFoto" SortExpression="nomeFoto"></asp:BoundField>
                     <asp:ButtonField ButtonType="Button" CommandName="Deletar" Text="Excluir" />
                     <asp:ButtonField ButtonType="Button" CommandName="Editar" Text="Editar" />
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:Button ID="btnClica" runat="server" CommandName="Excluir" CommandArgument="codigo" OnClientClick="return confirm('Certeza?')" Text="Excluir" />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
             </asp:GridView>
 
@@ -59,6 +65,8 @@
             <asp:HiddenField ID="hiddenfildCodigo" runat="server" Value="0" />
 
             <asp:SqlDataSource runat="server" ID="SqlDataSourceUsuario" ConnectionString='<%$ ConnectionStrings:DEV0102ConnectionString %>' SelectCommand="select '~/fotoUsuario/' + nomeFoto as caminhoFoto, * from tabusuario"></asp:SqlDataSource>
+            </asp:Panel>
+
         </div>
     </form>
 </body>

@@ -14,7 +14,23 @@ namespace DEV0102
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.ServerVariables["QUERY_STRING"].Contains("novoUsuario"))
+            {
+                panelUsuCadastrados.Visible = false;
+            } 
+                
+            else
+            {
+                if((Session["codigoUsuario"] == null))
+                {
+                    Response.Redirect("Login.aspx");
+                }
+                else
+                {
+                    panelUsuCadastrados.Visible = true;
+                }
+            }
+                
         }
 
         protected void btnConsultaCEP_Click(object sender, EventArgs e)
@@ -127,7 +143,7 @@ namespace DEV0102
 
         protected void gridUsuario_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Deletar")
+            if (e.CommandName == "Excluir")
             {
                 int linhaClicada = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gridUsuario.Rows[linhaClicada];
@@ -179,10 +195,10 @@ namespace DEV0102
                 ExibirMensagem(obju.nome);
 
             }
-            foreach (var item in collection)
-            {
-
-            }
+            
+            
+               
+            
           
 
 
